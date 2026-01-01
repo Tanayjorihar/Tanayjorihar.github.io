@@ -138,6 +138,8 @@
         .terminal-line:nth-child(6) { animation-delay: 3.2s; }
         .terminal-line:nth-child(7) { animation-delay: 3.8s; }
         .terminal-line:nth-child(8) { animation-delay: 4.4s; }
+        .terminal-line:nth-child(9) { animation-delay: 5s; }
+        .terminal-line:nth-child(10) { animation-delay: 5.6s; }
 
         @keyframes fadeIn {
             to { opacity: 1; }
@@ -736,7 +738,7 @@
                 <div class="terminal-btn yellow"></div>
                 <div class="terminal-btn green"></div>
             </div>
-            <div class="terminal-content">
+            <div class="terminal-content" id="terminalContent">
                 <div class="terminal-line">
                     <span class="prompt">> tanshell@security:~$</span> whoami
                 </div>
@@ -1166,33 +1168,6 @@
                 this.style.borderColor = 'var(--accent-cyan)';
             });
         });
-
-        // Terminal typing effect for new text
-        const addTerminalText = () => {
-            const terminalContent = document.querySelector('.terminal-content');
-            const newLines = [
-                { text: '<span class="prompt">> tanshell@security:~$</span> cat capabilities.txt', delay: 5000 },
-                { text: 'Bridging development and security - one vulnerability at a time.', delay: 6000 }
-            ];
-            
-            newLines.forEach((line, index) => {
-                setTimeout(() => {
-                    const newLine = document.createElement('div');
-                    newLine.className = 'terminal-line';
-                    newLine.style.animationDelay = `${index * 0.5}s`;
-                    newLine.innerHTML = line.text;
-                    
-                    // Add fade-in animation
-                    newLine.style.opacity = '0';
-                    newLine.style.animation = 'fadeIn 0.5s forwards';
-                    
-                    // terminalContent.appendChild(newLine);
-                }, line.delay);
-            });
-        };
-
-        // Start additional terminal lines after initial animation
-        setTimeout(addTerminalText, 5000);
 
         // Update current year in footer
         document.addEventListener('DOMContentLoaded', () => {
